@@ -1,0 +1,521 @@
+/* =s Reset (by YUI 3) */
+html {
+  color: #000;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+iframe {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img,
+input {
+  border: 0;
+}
+figure {
+  margin: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+/*ul{
+	list-style-type: none;
+}*/
+li {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: '';
+}
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+input,
+textarea,
+select {
+  *font-size: 100%;
+}
+legend {
+  color: #000;
+}
+time {
+  content: '';
+  display: block;
+}
+/* =e Reset */
+/* =s base */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Microsoft YaHei", simSun, "Lucida Grande", "Lucida Sans Unicode", Arial;
+  line-height: 170%;
+  font-size: 12px;
+  color: #000;
+}
+i,
+em,
+b {
+  font-style: normal;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a.under:link,
+a.under:active,
+a.under:visited,
+a.under:hover {
+  text-decoration: underline;
+}
+/* float*/
+.fltL {
+  float: left;
+}
+.fltR {
+  float: right;
+}
+.fixR {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.setCenter {
+  margin: 0 auto;
+}
+/* clear */
+.clrB {
+  clear: both;
+}
+.clrL {
+  clear: left;
+}
+.clrR {
+  clear: right;
+}
+.clrN {
+  clear: none;
+}
+.g-clr {
+  zoom: 1;
+}
+.g-clr:after {
+  display: block;
+  clear: both;
+  height: 0;
+  content: "\0020";
+}
+/* =e base */
+/* 垂直 渐变 */
+/* 水平 渐变 */
+/* CSS3 动画*/
+/* 搭配CSS3 动画使用 */
+@keyframes mymove {
+  
+}
+/* CSS3 改变元素样式 */
+/* 搭配 伪类标签：hover使用 */
+/* CSS3 改变元素空间 （ 自定义 ）*/
+/* CSS3 改变元素空间 （ 2D 缩放转换 ）*/
+/* CSS3 改变元素空间 （ 2D 旋转 ）*/
+/* CSS3 改变元素空间 （ 2D 倾斜转换 ）*/
+/* CSS3 改变元素空间 （ 修改元素位置 ）*/
+/* CSS3 改变元素空间 （ 自定义 ）*/
+/* CSS3 改变元素空间 （ 改变 父级 内 视察子级的视角 ）*/
+/* 搭配 rotateX(angle) 使用 */
+/* CSS3 改变元素中心点 */
+/* 搭配 rotate(angle) 使用 */
+/* 块级元素 内 对齐方式 （ 垂直 ） */
+/* 块级元素 内 对齐方式 （ 水平 ） */
+/* 块级元素 内 元素排列方式 */
+/* 块级元素 内 元素伸缩比例 （ 水平 ） */
+body {
+  background: #000;
+}
+/* 主框 */
+.main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 835px;
+  min-height: 580px;
+  box-sizing: border-box;
+  padding-bottom: 120px;
+  /* 主区域 */
+  /* 背景 */
+  /* 先把底条设计了 */
+  /* 使用弹窗 */
+}
+.main .main_area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 0px;
+  padding-top: 20px;
+  overflow: hidden;
+  line-height: 0px;
+}
+.main .main_area.fixed {
+  position: fixed;
+}
+.main .main_area .app_item {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 145px;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.main .main_area .app_item.fixed {
+  position: fixed;
+}
+.main .main_area .app_item.fixed.remove {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  -ms-transition: all 0.35s;
+  -o-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.main .main_area .app_item .app_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -28px;
+  margin-top: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  border: dashed 1px #FFF;
+  cursor: pointer;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.main .main_area .app_item .app_icon span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  width: 100%;
+  height: 18px;
+  color: #FFF;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.main .main_area .app_item .app_icon:hover {
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -ms-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+  box-shadow: 0px 0px 2px 1px #CCC;
+}
+.main .bottom_bg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 9;
+  background: #000;
+}
+.main .bottom_bar {
+  position: absolute;
+  left: 50%;
+  margin-left: -412px;
+  bottom: 15px;
+  width: 824px;
+  height: 100px;
+  border-bottom: solid thick #FFF;
+  text-align: center;
+  z-index: 10;
+  font-size: 0;
+}
+.main .bottom_bar .app_item {
+  position: relative;
+  display: inline-block;
+  margin-top: 30px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.main .bottom_bar .app_item.ani_css3 {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.main .bottom_bar .app_item.scale1 {
+  margin-top: 20px;
+  width: 70px;
+  height: 70px;
+}
+.main .bottom_bar .app_item.scale1 .app_icon {
+  -webkit-transform: scale(1.16666667);
+  -moz-transform: scale(1.16666667);
+  -ms-transform: scale(1.16666667);
+  -o-transform: scale(1.16666667);
+  transform: scale(1.16666667);
+}
+.main .bottom_bar .app_item.scale2 {
+  margin-top: 10px;
+  width: 80px;
+  height: 80px;
+}
+.main .bottom_bar .app_item.scale2 .app_icon {
+  -webkit-transform: scale(1.33333333);
+  -moz-transform: scale(1.33333333);
+  -ms-transform: scale(1.33333333);
+  -o-transform: scale(1.33333333);
+  transform: scale(1.33333333);
+}
+.main .bottom_bar .app_item:hover {
+  margin-top: 0px;
+  width: 90px;
+  height: 90px;
+}
+.main .bottom_bar .app_item:hover .app_icon {
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.main .bottom_bar .app_item.move {
+  position: fixed;
+  width: 90px;
+  height: 90px;
+  z-index: 2;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+.main .bottom_bar .app_item.move .app_icon {
+  opacity: 0.6;
+  background: #777;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.main .bottom_bar .app_item.scale2_space_l {
+  margin-right: 45px;
+}
+.main .bottom_bar .app_item.scale2_space_r {
+  margin-left: 45px;
+}
+.main .bottom_bar .app_item .app_icon {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  margin-left: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  border: dashed 1px #FFF;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform-origin: center 56px;
+  -moz-transform-origin: center 56px;
+  -ms-transform-origin: center 56px;
+  -o-transform-origin: center 56px;
+  transform-origin: center 56px;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.main .bottom_bar .app_item .app_icon span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  width: 100%;
+  height: 18px;
+  color: #FFF;
+  font-size: 18px;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  user-select: none;
+}
+.main .drag_win {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  display: none;
+}
+.main .drag_win.show {
+  display: block;
+}
+.main .drag_win #move_item {
+  position: fixed;
+  width: 90px;
+  height: 90px;
+}
+.main .drag_win #move_item .app_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -28px;
+  margin-top: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  border: dashed 1px #FFF;
+  cursor: pointer;
+  opacity: 0.6;
+  background: #777;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
+.main .drag_win #move_item .app_icon span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+  width: 100%;
+  height: 18px;
+  color: #FFF;
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+}
