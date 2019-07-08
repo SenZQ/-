@@ -93,7 +93,7 @@ $("body").mousemove(throttle(function(){
 
     if(            MOVETYPE != null && BEMOVENAME != null && EMPTYX != null && EMPTYY != null ){
 
-        if( app_item_touch( intX , intY , $(".bottom_bar").offset().left , $(".bottom_bar").offset().top , $(".bottom_bar").width() , $(".bottom_bar").height() ) ){
+        if( app_item_touch( intX , intY , $(".bottom_bar").offset().left , $(".bottom_bar").offset().top , $(".bottom_bar").width() , $(".bottom_bar").height() ) && $(".bottom_bar").children(".app_item").length<11 ){
             var touch_item_stat = false ;
             var itme_length = $(".bottom_bar").children(".app_item").length;
             // 元素间挤开
@@ -181,7 +181,7 @@ $("body").mousemove(debounce(function(){
             var touch_item_stat = false ;
             var itme_length = $(".main_area").children(".app_item").length;
 
-            $(".main_area").children(".app_item").removeClass("after_mark");
+            // $(".main_area").children(".app_item").removeClass("after_mark");
 
             // 检查间隙（ 得出间隙位置 ）
             var space1 = null ;
@@ -237,6 +237,7 @@ $("body").mousemove(debounce(function(){
 
                         // 触碰位置对比，计算移动范围
                         if( NumI != null ){
+                            $(".main_area").children(".app_item").removeClass("after_mark");
                             // 使用元素置换
                             if( NumI >= space1 ){
                                 // 往下挪
@@ -284,6 +285,7 @@ $("body").mousemove(debounce(function(){
                             }
                         }
                         else if( NumF != null ){
+                            $(".main_area").children(".app_item").removeClass("after_mark");
                             // 使用缝隙置换
                             if( NumF > space1 ){    // 往下挪
                                 var chNum = NumF-1;
@@ -369,6 +371,7 @@ $("body").mousemove(debounce(function(){
             // 如果页面存在缝隙，鼠标在元素末尾
             if( !touch_item_stat && space1 != null && ( (intX>parseFloat($(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).css("left")) && intY>parseFloat($(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).css("top"))) || (intY>parseFloat($(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).css("top")) + 145) ) ){
 
+                $(".main_area").children(".app_item").removeClass("after_mark");
                 var chNum = $(".main_area").children(".app_item").length-1;
                 console.log(space1+" ~ "+chNum);
                 for ( var t=chNum ; t>space1-1 ; t-- ) {
@@ -475,7 +478,7 @@ var UI = {   // ----------------------------------------------------------------
         function createScrollBar(){
             main_area_scrollBar = $(".main_area").niceScroll({
                 cursorcolor: "#dcdee0",      // 滚动条的颜色   
-                cursoropacitymax: 1,         // 滚动条的透明度，从0-1   
+                cursoropacitymax: 0,         // 滚动条的透明度，从0-1   
                 touchbehavior: false,        // 使光标拖动滚动像在台式电脑触摸设备   
                 cursorwidth: "5px",          // 滚动条的宽度   
                 cursorborder: "0",           // 游标边框css定义    
@@ -504,7 +507,7 @@ var UI = {   // ----------------------------------------------------------------
             var itme_left = $(".main_area").children(".app_item").eq(Num).offset().left , itme_top = $(".main_area").children(".app_item").eq(Num).offset().top , itme_html = $(".main_area").children(".app_item").eq(Num).html() ;
             $("#move_item").html(itme_html).css({
                 "left":itme_left+35,
-                "top":itme_top+23
+                "top":itme_top+27
             });
 
             // 设置空隙
@@ -525,11 +528,9 @@ var UI = {   // ----------------------------------------------------------------
                 $(".main_area").children(".app_item").eq(Num+1).css("marginLeft","160px").addClass("after_mark");
             }
             else if( Num-1 >= 0 ){
-                $(".main_area").children(".app_item").eq(Num-1).css("marginRight","160px");
+                // console.log("一定是你")
+                // $(".main_area").children(".app_item").eq(Num-1).css("marginRight","160px");
             }
-
-            // 将被选择的 item 从相对位置中抽离
-            $(".main_area").children(".app_item").eq(Num).remove();
 
             // 绝对定位化
             // 页面
@@ -543,6 +544,9 @@ var UI = {   // ----------------------------------------------------------------
                 "width":pageWidth+"px",
                 "height":pageHeight+"px"
             }).addClass("fixed");
+
+            // 将被选择的 item 从相对位置中抽离
+            $(".main_area").children(".app_item").eq(Num).remove();
 
             // APP元素
             for (var t = $(".main_area").children(".app_item").length - 1; t >= 0; t--) {
@@ -582,24 +586,22 @@ var UI = {   // ----------------------------------------------------------------
 
         // 底条触摸动画效果事件（ mouseover ）
         $(".bottom_bar").on("mouseover",".app_item",function(){
-            if( !$(this).is(".move") ){
-                var Num = $(".bottom_bar").children(".app_item").index(this);
-                if( Num-2 >= 0 ){
-                    $(".bottom_bar").children(".app_item").eq(Num-2).addClass("scale1").removeClass("scale2");
-                }
-                if( Num-1 >= 0 ){
-                    $(".bottom_bar").children(".app_item").eq(Num-1).addClass("scale2").removeClass("scale1");
-                }
-                if( Num+1 <= $(".bottom_bar").children(".app_item").length-1 ){
-                    $(".bottom_bar").children(".app_item").eq(Num+1).addClass("scale2").removeClass("scale1");
-                }
-                if( Num+2 <= $(".bottom_bar").children(".app_item").length-1 ){
-                    $(".bottom_bar").children(".app_item").eq(Num+2).addClass("scale1").removeClass("scale2");
-                }
-                for (var i = 0; i < $(".bottom_bar").children(".app_item").length; i++) {
-                    if( i != Num-2 && i != Num-1 && i != Num+1 && i != Num+2 ){
-                        $(".bottom_bar").children(".app_item").eq(i).removeClass("scale1").removeClass("scale2");
-                    }
+            var Num = $(".bottom_bar").children(".app_item").index(this);
+            if( Num-2 >= 0 ){
+                $(".bottom_bar").children(".app_item").eq(Num-2).addClass("scale1").removeClass("scale2");
+            }
+            if( Num-1 >= 0 ){
+                $(".bottom_bar").children(".app_item").eq(Num-1).addClass("scale2").removeClass("scale1");
+            }
+            if( Num+1 <= $(".bottom_bar").children(".app_item").length-1 ){
+                $(".bottom_bar").children(".app_item").eq(Num+1).addClass("scale2").removeClass("scale1");
+            }
+            if( Num+2 <= $(".bottom_bar").children(".app_item").length-1 ){
+                $(".bottom_bar").children(".app_item").eq(Num+2).addClass("scale1").removeClass("scale2");
+            }
+            for (var i = 0; i < $(".bottom_bar").children(".app_item").length; i++) {
+                if( i != Num-2 && i != Num-1 && i != Num+1 && i != Num+2 ){
+                    $(".bottom_bar").children(".app_item").eq(i).removeClass("scale1").removeClass("scale2");
                 }
             }
         });
@@ -711,12 +713,40 @@ var UI = {   // ----------------------------------------------------------------
                 var NumBefore = $(".main_area").children(".app_item").index( $(".after_mark") );
                 for (var i = 0; i < $(".main_area").children(".app_item").length+1; i++) {
                     if( i == NumBefore ){
-                        $(".main_area").children(".app_item").eq(i).before('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
-                        $(".drag_win").removeClass("show");
-                        $(".move").css({
-                            "left":"",
-                            "top":""
-                        }).attr("id","").removeClass("move");
+                        // ... 增加进场动画 test
+                        var aniLeft , aniTop ;
+                        if( i-1 >= 0 ){
+                            if( parseFloat($(".main_area").children(".app_item").eq(i).offset().top) == parseFloat($(".main_area").children(".app_item").eq(i-1).offset().top) ){
+                                console.log("同行间隙");
+                                aniLeft = $(".main_area").children(".app_item").eq(i).offset().left-160+35;
+                                aniTop  = $(".main_area").children(".app_item").eq(i).offset().top+27;
+                            }
+                            else{
+                                if( parseFloat($(".main_area").children(".app_item").eq(i).css("left"))-parseFloat($(".main_area").css("paddingLeft")) >= 158 ){
+                                    console.log("当前行首间隙");
+                                    aniLeft = $(".main_area").children(".app_item").eq(i).offset().left-160+35;
+                                    aniTop  = $(".main_area").children(".app_item").eq(i).offset().top+27;
+                                }
+                                else if( $(".main_area").get(0).clientWidth-160-parseFloat($(".main_area").children(".app_item").eq(i-1).css("left"))-parseFloat($(".main_area").css("paddingLeft")) >= 158 ){
+                                    console.log("上一行尾");
+                                    aniLeft = $(".main_area").children(".app_item").eq(i-1).offset().left+160+35;
+                                    aniTop  = $(".main_area").children(".app_item").eq(i).offset().top-145+27;
+                                }
+                            }
+                        }
+                        else{
+                            if( parseFloat($(".main_area").children(".app_item").eq(i).css("left"))-parseFloat($(".main_area").css("paddingLeft")) >= 158 ){
+                                console.log("行首空隙");
+                                aniLeft = $(".main_area").children(".app_item").eq(i).offset().left-160+35;
+                                aniTop  = $(".main_area").children(".app_item").eq(i).offset().top+27;
+                            }
+                        }
+                        $("#move_item").animate({left:aniLeft,top:aniTop},200,function(){
+                            $(".opacity0").removeClass("opacity0");
+                            $(".drag_win").removeClass("show");
+                        });
+                        // ... 增加进场动画 test
+                        $(".main_area").children(".app_item").eq(i).before('<div class="app_item ani_css3 opacity0" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
                         i++;
                         $(".main_area").children(".app_item").eq(i).css({
                             "left":"",
@@ -737,6 +767,7 @@ var UI = {   // ----------------------------------------------------------------
 
             }
             else{
+                // console.log("在这里了")
                 for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
                     $(".main_area").children(".app_item").eq(i).css({
                         "left":"",
@@ -745,8 +776,22 @@ var UI = {   // ----------------------------------------------------------------
                         "marginRight":""
                     }).addClass("ani_css3").removeClass("fixed").removeClass("remove");
                 }
-                $(".main_area").append('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
-                $(".drag_win").removeClass("show");
+                var aniLeft , aniTop ;
+                if( $(".main_area").get(0).clientWidth-160-parseFloat($(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).offset().left)-parseFloat($(".main_area").css("paddingLeft")) >= 158 ){
+                    console.log("行尾缝隙足够大，上一行补充");
+                        aniLeft = $(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).offset().left+160+35;
+                        aniTop  = $(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).offset().top+27;
+                }
+                else{
+                    console.log("行尾没缝隙，下一行补充");
+                        aniLeft = parseFloat($(".main_area").css("paddingLeft"))+35;
+                        aniTop  = $(".main_area").children(".app_item").eq($(".main_area").children(".app_item").length-1).offset().top+145+27;
+                }
+                $("#move_item").animate({left:aniLeft,top:aniTop},200,function(){
+                    $(".opacity0").removeClass("opacity0");
+                    $(".drag_win").removeClass("show");
+                });
+                $(".main_area").append('<div class="app_item ani_css3 opacity0" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
             }
             $(".after_mark").removeClass("after_mark");
             var sT = Math.abs($(".main_area").offset().top);
@@ -762,39 +807,93 @@ var UI = {   // ----------------------------------------------------------------
         }
         else if( app_item_touch( dealX , dealY , $(".bottom_bar").offset().left , $(".bottom_bar").offset().top , $(".bottom_bar").width() , $(".bottom_bar").height() ) ){
 
-            $(".drag_win").removeClass("show");
-            if(      $(".scale2_space_l").length>0 ){
-                $(".scale2_space_l").eq(0).after('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
-            }
-            else if( $(".scale2_space_r").length>0 ){
-                $(".scale2_space_r").eq(0).before('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
-            }
-            $(".scale2_space_l").removeClass("scale2_space_l");
-            $(".scale2_space_r").removeClass("scale2_space_r");
-            $(".scale2").removeClass("scale2");
-            $(".scale1").removeClass("scale1");
             // 【 清空 启动参数 】
             BEMOVENAME = null;  
             MOVETYPE   = null;  
             EMPTYX     = null;  
             EMPTYY     = null; 
 
-            // 补救主界面间隙程序
-            for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
-                $(".main_area").children(".app_item").eq(i).css({
+            if( $(".bottom_bar").children(".app_item").length < 11 ){
+
+                $(".drag_win").removeClass("show");
+                if(      $(".scale2_space_l").length>0 ){
+                    $(".scale2_space_l").eq(0).after('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
+                }
+                else if( $(".scale2_space_r").length>0 ){
+                    $(".scale2_space_r").eq(0).before('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
+                }
+                $(".scale2_space_l").removeClass("scale2_space_l");
+                $(".scale2_space_r").removeClass("scale2_space_r");
+                $(".scale2").removeClass("scale2");
+                $(".scale1").removeClass("scale1");
+
+                // 补救主界面间隙程序
+                for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
+                    $(".main_area").children(".app_item").eq(i).css({
+                        "left":"",
+                        "top":"",
+                        "marginLeft":"",
+                        "marginRight":""
+                    }).addClass("ani_css3").removeClass("fixed").removeClass("remove");
+                }
+                var sT = Math.abs($(".main_area").offset().top);
+                $(".main_area").css({
                     "left":"",
                     "top":"",
-                    "marginLeft":"",
-                    "marginRight":""
-                }).addClass("ani_css3").removeClass("fixed").removeClass("remove");
+                    "width":"100%",
+                    "height":"100%"
+                }).removeClass("fixed").scrollTop(sT);
+
             }
-            var sT = Math.abs($(".main_area").offset().top);
-            $(".main_area").css({
-                "left":"",
-                "top":"",
-                "width":"100%",
-                "height":"100%"
-            }).removeClass("fixed").scrollTop(sT);
+            else{
+
+                /*$(".scale2_space_l").removeClass("scale2_space_l");
+                $(".scale2_space_r").removeClass("scale2_space_r");
+                $(".scale2").removeClass("scale2");
+                $(".scale1").removeClass("scale1");
+
+                for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
+                    $(".main_area").children(".app_item").eq(i).css({
+                        "left":"",
+                        "top":"",
+                        "marginLeft":"",
+                        "marginRight":""
+                    }).addClass("ani_css3").removeClass("fixed").removeClass("remove");
+                }
+                $(".drag_win").removeClass("show");
+                $(".main_area").append('<div class="app_item ani_css3 opacity0" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
+                var sT = Math.abs($(".main_area").offset().top);
+                $(".main_area").css({
+                    "left":"",
+                    "top":"",
+                    "width":"100%",
+                    "height":"100%"
+                }).removeClass("fixed").scrollTop(sT);*/
+                alert("Dock 底条位置已满，强制放在主界面后部");
+                $(".scale2_space_l").removeClass("scale2_space_l");
+                $(".scale2_space_r").removeClass("scale2_space_r");
+                $(".scale2").removeClass("scale2");
+                $(".scale1").removeClass("scale1");
+                for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
+                    $(".main_area").children(".app_item").eq(i).css({
+                        "left":"",
+                        "top":"",
+                        "marginLeft":"",
+                        "marginRight":""
+                    }).addClass("ani_css3").removeClass("fixed").removeClass("remove");
+                }
+                $(".drag_win").removeClass("show");
+                $(".main_area").append('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
+                var sT = Math.abs($(".main_area").offset().top);
+                $(".main_area").css({
+                    "left":"",
+                    "top":"",
+                    "width":"100%",
+                    "height":"100%"
+                }).removeClass("fixed").scrollTop(sT);
+            }
+
+                
 
         }
         mouseupDealXY.stat = false;

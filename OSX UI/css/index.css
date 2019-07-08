@@ -258,6 +258,9 @@ body {
   -o-transition: all 0.35s;
   transition: all 0.35s;
 }
+.main .main_area .app_item.opacity0 {
+  opacity: 0;
+}
 .main .main_area .app_item .app_icon {
   position: absolute;
   left: 50%;
