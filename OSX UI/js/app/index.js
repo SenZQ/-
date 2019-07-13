@@ -607,7 +607,7 @@ var UI = {   // ----------------------------------------------------------------
         });
         //（ mouseout ）
         $(".bottom_bar").on("mouseout",".app_item",function(){
-            $(".bottom_bar").children(".app_item").removeClass("scale1").removeClass("scale2");
+            $(".bottom_bar").children(".app_item").removeClass("scale1").removeClass("scale2").removeClass("scale_max");
         });
 
         
@@ -648,7 +648,7 @@ var UI = {   // ----------------------------------------------------------------
 
             // APP元素
             for (var t = $(".main_area").children(".app_item").length - 1; t >= 0; t--) {
-                if( !$(".main_area").children(".app_item").eq(t).is(".move") ){
+                // if( !$(".main_area").children(".app_item").eq(t).is(".move") ){
                     var left = parseInt($(".main_area").children(".app_item").eq(t).offset().left);
                     var top = parseInt($(".main_area").children(".app_item").eq(t).offset().top)
                     $(".main_area").children(".app_item").eq(t).removeClass("ani_css3").css({
@@ -657,7 +657,7 @@ var UI = {   // ----------------------------------------------------------------
                         "marginLeft":"0px",
                         "marginRight":"0px"
                     }).addClass("fixed");
-                }
+                // }
             }
 
             // 【 启动参数 】
@@ -815,7 +815,29 @@ var UI = {   // ----------------------------------------------------------------
 
             if( $(".bottom_bar").children(".app_item").length < 11 ){
 
-                $(".drag_win").removeClass("show");
+            	// test 2019.7.13 
+
+            	// 1 在 底条添加 透明结果元素
+            	if(      $(".scale2_space_l").length>0 ){
+                    $(".scale2_space_l").eq(0).after('<div class="app_item ani_css3 opacity0 scale_max" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>').removeClass("ani_css3").removeClass("scale2_space_l");
+                    $(".scale2_space_r").removeClass("ani_css3").removeClass("scale2_space_r");
+                }
+                else if( $(".scale2_space_r").length>0 ){
+                    $(".scale2_space_r").eq(0).before('<div class="app_item ani_css3 opacity0 scale_max" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>').removeClass("ani_css3").removeClass("scale2_space_r");
+                    $(".scale2_space_l").removeClass("ani_css3").removeClass("scale2_space_l");
+                }
+                // setTimeout(function(){  $(".bottom_bar").children(".app_item").addClass("ani_css3")  },10);
+
+            	// 3 移动元素 animate 动画至透明结果元素处
+            	$("#move_item").animate({left:$(".bottom_bar").children(".opacity0").offset().left,top:$(".bottom_bar").children(".opacity0").offset().top},200,function(){
+            		$(".opacity0").removeClass("ani_css3").removeClass("opacity0");
+            	    $(".drag_win").removeClass("show");
+            	});
+            	setTimeout(function(){  $(".bottom_bar").children(".app_item").addClass("ani_css3")  },10);
+
+            	// test 2019.7.13 
+
+                /*$(".drag_win").removeClass("show");
                 if(      $(".scale2_space_l").length>0 ){
                     $(".scale2_space_l").eq(0).after('<div class="app_item ani_css3" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
                 }
@@ -825,7 +847,7 @@ var UI = {   // ----------------------------------------------------------------
                 $(".scale2_space_l").removeClass("scale2_space_l");
                 $(".scale2_space_r").removeClass("scale2_space_r");
                 $(".scale2").removeClass("scale2");
-                $(".scale1").removeClass("scale1");
+                $(".scale1").removeClass("scale1");*/
 
                 // 补救主界面间隙程序
                 for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
@@ -847,28 +869,6 @@ var UI = {   // ----------------------------------------------------------------
             }
             else{
 
-                /*$(".scale2_space_l").removeClass("scale2_space_l");
-                $(".scale2_space_r").removeClass("scale2_space_r");
-                $(".scale2").removeClass("scale2");
-                $(".scale1").removeClass("scale1");
-
-                for (var i = 0; i < $(".main_area").children(".app_item").length ; i++) {
-                    $(".main_area").children(".app_item").eq(i).css({
-                        "left":"",
-                        "top":"",
-                        "marginLeft":"",
-                        "marginRight":""
-                    }).addClass("ani_css3").removeClass("fixed").removeClass("remove");
-                }
-                $(".drag_win").removeClass("show");
-                $(".main_area").append('<div class="app_item ani_css3 opacity0" draggable="false" ondragstart="return false">'+$("#move_item").html()+'</div>');
-                var sT = Math.abs($(".main_area").offset().top);
-                $(".main_area").css({
-                    "left":"",
-                    "top":"",
-                    "width":"100%",
-                    "height":"100%"
-                }).removeClass("fixed").scrollTop(sT);*/
                 alert("Dock 底条位置已满，强制放在主界面后部");
                 $(".scale2_space_l").removeClass("scale2_space_l");
                 $(".scale2_space_r").removeClass("scale2_space_r");

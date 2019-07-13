@@ -362,6 +362,9 @@ body {
   -o-transition: all 0.3s;
   transition: all 0.3s;
 }
+.main .bottom_bar .app_item.opacity0 {
+  opacity: 0;
+}
 .main .bottom_bar .app_item.scale1 {
   margin-top: 20px;
   width: 70px;
@@ -398,20 +401,12 @@ body {
   -o-transform: scale(1.5);
   transform: scale(1.5);
 }
-.main .bottom_bar .app_item.move {
-  position: fixed;
+.main .bottom_bar .app_item.scale_max {
+  margin-top: 0px;
   width: 90px;
   height: 90px;
-  z-index: 2;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
 }
-.main .bottom_bar .app_item.move .app_icon {
-  opacity: 0.6;
-  background: #777;
+.main .bottom_bar .app_item.scale_max .app_icon {
   -webkit-transform: scale(1.5);
   -moz-transform: scale(1.5);
   -ms-transform: scale(1.5);
