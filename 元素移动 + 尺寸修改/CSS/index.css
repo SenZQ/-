@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, select, option, blockquote, th, td{font-family:'Regencie','微软雅黑',"Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti /*!important*/;outline:none;}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------ 移动实验体 ------------------ */
+
+#TheMove{position:absolute;left:200px;top:200px;height:100px;width:100px;z-index:10;}
+
+   
+
+   /* 实验题外观轮廓 */
+   .TheMoveStyle{position:absolute;left:0;top:0;height:100%;width:100%;border:dashed thin #999;z-index:-1;}
+
+   /* 保证拖动的全局背景 */
+   #MoveBG{position:fixed;left:0;top:0;height:100%;width:100%;z-index:1;display:none;}
+
+   /* 多功能操作模块 */
+   #FuncitonLIST{position:absolute;left:0;top:0;height:100%;width:100%;z-index:10;box-shadow:0px 0px 3px 3px #2980B9;display:none;}
+
+      /* 启动拖拽 */
+      #MoveBTN{position:absolute;left:0;top:0;height:100%;width:100%;border:none;background-color:inherit;z-index:10;};
+
+      /* 改变尺寸按钮定位 */
+      .ChangeSizePOSITION{position:absolute;width:0px;height:0px;}
+
+         /* 按钮定位 */
+         .CSP_top{    position:absolute;left:50%;top:-25px;    } /* 上 */
+         .CSP_bottom{ position:absolute;left:50%;bottom:-25px; } /* 下 */
+         .CSP_left{   position:absolute;top:50%;left:-25px;    } /* 左 */
+         .CSP_right{  position:absolute;top:50%;right:-25px;   } /* 右 */
+
+         /* 改变尺寸 */
+         .ChangeSizeBTN{position:absolute;left:-25px;top:-25px;height:50px;width:50px;padding-left:9px;padding-top:5px;color:#115F88;font-size:32px;z-index:10;}
+
+            /* 保证拖动的全局背景 */
+            .ChangeSizeBG{position:fixed;left:0;top:0;height:100%;width:100%;z-index:1;display:none;}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>元素移动 + 修改尺寸</title>
+
+
+
+<!-- 基础文件 -->
+
+<script src="JS/jquery-3.1.1.min.js"></script>
+
+<!-- bootstrap_3.3.7 -->
+
+      <!-- js -->
+
+      <script src="JS/bootstrap/js/bootstrap.js"></script>
+
+      <!-- css -->
+
+      <link rel=stylesheet type="text/css" href="JS/bootstrap/css/bootstrap.css">
+
+      <link rel=stylesheet type="text/css" href="JS/bootstrap/css/bootstrap-theme.css">
+
+      <link rel=stylesheet type="text/css" href="JS/bootstrap/css/bootstrap-theme.min.css">
+
+      <link rel=stylesheet type="text/css" href="CSS/index.css">
+
+</head>
+
+<body>
+
+   
+
+
+   
+   <!-- —————————————————————————————————————————————————————————————————————————————————————————— 拉伸实验体 ————————————————————————————————————————————————————————————————————————————————————————— -->
+
+   <div draggable="false" ondragstart="return false"       id="TheMove">
+
+
+
+      <!-- 实验题外观轮廓 -->
+      <div draggable="false" ondragstart="return false"       class="TheMoveStyle"></div>
+
+      
+
+      <!-- 多功能操作模块 -->
+      <div draggable="false" ondragstart="return false"       id="FuncitonLIST">
+
+               <!-- 启动拖拽 Move -->
+               <div draggable="false" ondragstart="return false"       id="MoveBTN" type="button"><!-- ————————————————————————————————— 拖动模块的实际层 【 function 】-->
+                  <div draggable="false" ondragstart="return false"       id="MoveBG"></div><!-- ——————————————————————————————————————— 保证拖动的全局背景          BG -->
+               </div>
+
+               <!-- 改变 height BY top                 -->
+               <div draggable="false" ondragstart="return false"       class="ChangeSizePOSITION CSP_top"><!-- —————————————————————-——— 定位控制按钮层，无尺寸大小     -->
+                  <div draggable="false" ondragstart="return false"       id="HeightBTN_top"    class="ChangeSizeBTN"><!-- —————————-——— 操作尺寸的实际层 【 function 】-->
+                     <div draggable="false" ondragstart="return false"       class="glyphicon glyphicon-resize-vertical"></div><!-- ———— bootstrap 内置 Glyphicons 字体 -->
+                     <div draggable="false" ondragstart="return false"       class="ChangeSizeBG"></div><!-- ——————————————————————————— 保证改变尺寸的全局背景      BG -->
+                  </div>
+               </div>
+
+               <!-- 改变 height BY bottom              -->
+               <div draggable="false" ondragstart="return false"       class="ChangeSizePOSITION CSP_bottom">
+                  <div draggable="false" ondragstart="return false"       id="HeightBTN_bottom" class="ChangeSizeBTN">
+                     <div draggable="false" ondragstart="return false"       class="glyphicon glyphicon-resize-vertical"></div>
+                     <div draggable="false" ondragstart="return false"       class="ChangeSizeBG"></div>
+                  </div>
+               </div>
+
+               <!-- 改变 width BY left                 -->
+               <div draggable="false" ondragstart="return false"       class="ChangeSizePOSITION CSP_left">
+                  <div draggable="false" ondragstart="return false"       id="WidthBTN_left"    class="ChangeSizeBTN">
+                     <div draggable="false" ondragstart="return false"       class="glyphicon glyphicon-resize-horizontal"></div>
+                     <div draggable="false" ondragstart="return false"       class="ChangeSizeBG"></div>
+                  </div>
+               </div>
+
+               <!-- 改变 width BY right                -->
+               <div draggable="false" ondragstart="return false"       class="ChangeSizePOSITION CSP_right">
+                  <div draggable="false" ondragstart="return false"       id="WidthBTN_right"   class="ChangeSizeBTN">
+                     <div draggable="false" ondragstart="return false"       class="glyphicon glyphicon-resize-horizontal"></div>
+                     <div draggable="false" ondragstart="return false"       class="ChangeSizeBG"></div>
+                  </div>
+               </div>
+
+      </div>
+
+   </div>
+
+   
+
+
+
+
+   <script src="JS/html/index.js"></script>
+
+</body>
+</html>
